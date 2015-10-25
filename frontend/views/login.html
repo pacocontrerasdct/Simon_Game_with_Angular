@@ -4,8 +4,8 @@
 
   <form id="checkPlayer"
           ng-submit='players.getPlayer()'>
-    <input type="text" ng-model="" placeholder="Name or Alias">
-    <input type="text" ng-model="" placeholder="Email">
+    <input type="text" ng-model="" placeholder="Name or Alias" required>
+    <input type="email" ng-model="" placeholder="Email" required>
     <button>log in</button>
     <button ui-sref="signup">New player?</button>
   </form>

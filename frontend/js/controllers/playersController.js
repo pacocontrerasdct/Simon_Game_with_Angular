@@ -26,7 +26,12 @@ function playersController($http){
   function selectPlayer() {
     console.log('inside SelectPlayer');
     console.log("Player for Select: ", self.remindPlayer.email);
-    //self.onePlayer = remindPlayer;
+    $http
+      .get('http://localhost:3000/players/' + self.remindPlayer.email)
+      .then(function(response) {
+          console.log("Response after find player for email >>>", response.data.message)
+          // getPlayers();
+      })
     self.remindPlayer = {};
   }
 

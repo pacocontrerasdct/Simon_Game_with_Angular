@@ -4,15 +4,13 @@
 
   <form id="addPlayer"
           ng-submit='players.addPlayer()'>
-
-
     <label for="new-player-name">Name</label>
-    <input type="text" id="new-player-name" placeholder="Name or Alias" ng-model='players.newPlayer.name'>
+    <input type="text" id="new-player-name" placeholder="Name or Alias" ng-model='players.newPlayer.name' required>
     <label for="new-player-email">Email</label>
-    <input type="text" id="new-player-email" placeholder="Email" ng-model='players.newPlayer.email'>
+    <input type="email" id="new-player-email" placeholder="Email" ng-model='players.newPlayer.email' required>
     <button>Sign up</button>
   </form>
   <a ui-sref="reminder">Forgot your name or alias?</a>
-  <a ui-sref="/">Back</a>
+  <a ui-sref="login">Back</a>
 
 </section>

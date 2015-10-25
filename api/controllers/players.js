@@ -9,6 +9,20 @@ function getAll(request, response) {
   }).select('-__v');
 }
 
+// FIND A PLAYER'S DATA
+function findPlayerData(request, response) {
+  console.log('Hitting findPlayerData for email at api');
+  console.log('coming from email', request.params.email)
+  var email = request.params.email;
+  Player.find({'email': email}, function(error, player) {
+    if(error) response.json({message: 'Could not find player b/c:' + error});
+    // If find a match in DB get name/alias and send info to player
+    console.log("the name asociated to the email is: ", player[0].name);
+
+    response.json({message: '"Email send to Player successfully"', player: player[0].name});
+  }).select('-__v');
+}
+
 // POST A NEW PLAYER
 function createPlayer(request, response) {
   console.log('Hitting createPlayer at api');
@@ -62,5 +76,6 @@ module.exports = {
   createPlayer: createPlayer,
   getPlayer: getPlayer,
   updatePlayer: updatePlayer,
-  removePlayer: removePlayer
+  removePlayer: removePlayer,
+  findPlayerData: findPlayerData
 }

@@ -5,7 +5,7 @@ angular
 
 function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
-
+  
   $stateProvider
     .state('login', {
       url: '/',

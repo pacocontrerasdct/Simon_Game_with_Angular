@@ -3,11 +3,12 @@
 <h2>Just write the email which you signed up with us and we will send to your post your details</h2>
 
   <form id="remindPlayer"
-          ng-submit='players.selectPlayer()'>
+    ng-submit='players.selectPlayer()'>
     <label for="remind-player-email">Email</label>
-    <input type="text" id="remind-player-email" placeholder="Email" ng-model='players.remindPlayer.email'>
+    <input type="email" id="remind-player-email" placeholder="Email"
+      ng-model='players.remindPlayer.email' required>
     <button>Remind my data</button>
   </form>
-  <a ui-sref="/">Back</a>
+  <a ui-sref="login">Back</a>
 
 </section>
