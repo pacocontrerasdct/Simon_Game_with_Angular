@@ -11,20 +11,22 @@ function getAll(request, response) {
 
 // POST A NEW PLAYER
 function createPlayer(request, response) {
-  var newPlayer = new Player(request.body);
-  newPlayer.save(function(error) {
-    if(error) response.json({messsage: 'Could not create new player b/c:' + error});
-    response.json({player: newPlayer});
-  });
+  console.log('Hitting createPlayer at api')
+  // var newPlayer = new Player(request.body);
+  // newPlayer.save(function(error) {
+  //   if(error) response.json({messsage: 'Could not create new player b/c:' + error});
+  //   response.json({player: newPlayer});
+  // });
 }
 
 // GET A PLAYER
 function getPlayer(request, response) {
-  var id = request.params.id;
-  Player.findById({_id: id}, function(error, player) {
-    if(error) response.json({message: 'Could not find player b/c:' + error});
-    response.json({player: player});
-  }).select('-__v');
+  console.log('Hitting getPlayer at api')
+  // var id = request.params.id;
+  // Player.findById({_id: id}, function(error, player) {
+  //   if(error) response.json({message: 'Could not find player b/c:' + error});
+  //   response.json({player: player});
+  // }).select('-__v');
 }
 
 // UPDATE A PLAYER

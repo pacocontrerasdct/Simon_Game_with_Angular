@@ -7,14 +7,14 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('signup', {
-      url: '/signup',
-      templateUrl: 'signup.html'
+    .state('login', {
+      url: '/',
+      templateUrl: 'views/login.html'
     }),
   $stateProvider
-    .state('index', {
-      url: '/',
-      templateUrl: 'index.html'
+    .state('signup', {
+      url: '/signup',
+      templateUrl: 'views/signup.html'
     })
 
 };
