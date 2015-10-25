@@ -1,0 +1,13 @@
+<section ng-controller="playersController as players">
+<h1>Im reminder</h1>
+<h2>Just write the email which you signed up with us and we will send to your post your details</h2>
+
+  <form id="remindPlayer"
+          ng-submit='players.selectPlayer()'>
+    <label for="remind-player-email">Email</label>
+    <input type="text" id="remind-player-email" placeholder="Email" ng-model='players.remindPlayer.email'>
+    <button>Remind my data</button>
+  </form>
+  <a ui-sref="/">Back</a>
+
+</section>

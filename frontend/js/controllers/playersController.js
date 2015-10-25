@@ -21,11 +21,13 @@ function playersController($http){
 
   // When log in, cheking in db if player already exist
   self.selectPlayer = selectPlayer;
+  self.remindPlayer = {};
 
-  function selectPlayer(player) {
+  function selectPlayer() {
     console.log('inside SelectPlayer');
-    console.log("Player for Select: ", player);
-    self.onePlayer = player;
+    console.log("Player for Select: ", self.remindPlayer.email);
+    //self.onePlayer = remindPlayer;
+    self.remindPlayer = {};
   }
 
   // When sign up a new player, app records data

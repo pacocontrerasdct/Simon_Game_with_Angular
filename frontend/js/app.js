@@ -15,6 +15,11 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('signup', {
       url: '/signup',
       templateUrl: 'views/signup.html'
+    }),
+  $stateProvider
+    .state('reminder', {
+      url: '/reminder',
+      templateUrl: 'views/reminder.html'
     })
 
 };
