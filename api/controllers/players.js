@@ -1,5 +1,5 @@
-var Player = require('../models/player');
-//var game = require('../models/game');
+var Player = require('../models/Player');
+//var Game = require('../models/Game');
 
 // GET ALL PLAYERS
 function getAll(request, response) {  
@@ -11,12 +11,13 @@ function getAll(request, response) {
 
 // POST A NEW PLAYER
 function createPlayer(request, response) {
-  console.log('Hitting createPlayer at api')
-  // var newPlayer = new Player(request.body);
-  // newPlayer.save(function(error) {
-  //   if(error) response.json({messsage: 'Could not create new player b/c:' + error});
-  //   response.json({player: newPlayer});
-  // });
+  console.log('Hitting createPlayer at api');
+  console.log(request.body)
+  var newPlayer = new Player(request.body);
+  newPlayer.save(function(error) {
+    if(error) response.json({messsage: 'Could not create new player b/c:' + error});
+    response.json({player: newPlayer});
+  });
 }
 
 // GET A PLAYER

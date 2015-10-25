@@ -4,7 +4,7 @@ angular.module('SimonGameApp')
 playersController.$inject = ['$http'];
 
 function playersController($http){
-  console.log('I am the controller');
+  console.log('I am the frontend controller');
   var self = this;
   self.all = [];
 
@@ -34,10 +34,11 @@ function playersController($http){
 
   function addPlayer() {
     console.log('inside addPlayer');
+    console.log(self.newPlayer);
     $http
       .post('http://localhost:3000/players', self.newPlayer)
       .then(function(response) {
-          console.log(response)
+          console.log("Response after add player", response)
           getPlayers();
       })
     self.newPlayer = {};
