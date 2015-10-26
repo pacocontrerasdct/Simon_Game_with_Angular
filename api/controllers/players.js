@@ -1,6 +1,20 @@
 var Player = require('../models/Player');
 //var Game = require('../models/Game');
 
+// For dealing with Emails we need to create a mail object using the package installed 'nodemailer'
+var nodemailer = require('nodemailer');
+// This var give data from sender, the app, in this case, me for testing
+var transport = nodemailer.createTransport("SMTP", {
+    host: "smtp.gmail.com", // hostname
+    secureConnection: true, // use SSL
+    port: 465, // port for secure SMTP
+    auth: {
+        user: "simon.game.app@gmail.com",
+        pass: "pPZNAlqX7LMemUppNv3"
+    }
+});
+
+
 // GET ALL PLAYERS
 function getAll(request, response) {  
   Player.find(function(error, players) {
@@ -18,7 +32,26 @@ function findPlayerData(request, response) {
     if(error) response.json({message: 'Could not find player b/c:' + error});
     // If find a match in DB get name/alias and send info to player
     console.log("the name asociated to the email is: ", player[0].name);
-
+    // Now we're creating the mail structure
+    var subject = "This are your details from Simon Game APP"
+    var text = "This is your user name or alias: " + player[0].name + ", and this is your email: " + email;
+    var mailOptions = {
+      to : email,
+      subject : subject,
+      text : text
+    }
+    console.log(mailOptions);
+    // Sending email using the object we created at the beginning of this page
+    transport.sendMail(mailOptions, function(error, res){
+      if(error){
+        console.log(error);
+        res("error");
+      }else{
+        console.log("Message sent: " + res.message);
+        res("sent");
+      }
+      mailOptions = {};
+    });
     response.json({message: '"Email send to Player successfully"', player: player[0].name});
   }).select('-__v');
 }

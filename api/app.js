@@ -10,17 +10,6 @@ var app = express();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/simon-game-mean-app');
 
-// For dealing with Emails
-var smtpTransport = nodemailer.createTransport("SMTP",{
-  service: "webmail.hispavista",
-  auth:{
-        user: "pacocontrerasdct@hispavista.com",
-        pass: "FNp9nZ5bYc"
-      }
-});
-
-
-
 var routes = require('./config/routes');
 
 app.use(cors());
