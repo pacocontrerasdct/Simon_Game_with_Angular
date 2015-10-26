@@ -48,7 +48,7 @@ function findPlayerData(request, response) {
         res("error");
       }else{
         console.log("Message sent: " + res.message);
-        res("sent");
+        // res("sent");
       }
       mailOptions = {};
     });

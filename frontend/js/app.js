@@ -20,6 +20,12 @@ function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('reminder', {
       url: '/reminder',
       templateUrl: 'views/reminder.html'
+    }),
+  $stateProvider
+    .state('play', {
+      url: '/play',
+      templateUrl: 'views/play.html'
     })
 
 };
+
