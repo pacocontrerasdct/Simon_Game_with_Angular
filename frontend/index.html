@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="css/style-pure.css">
     <!--<![endif]-->
   <link rel="stylesheet" href="css/style-mine.css">
+  <link rel="stylesheet" href="css/style-buttons.css">
 </head>
 <body ng-app='SimonGameApp'>
   <section ng-controller="playersController as players">
@@ -36,6 +37,7 @@
         <a ui-sref="login" class="pure-menu-heading">SIMON</a>
 
         <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a ui-sref="login" class="pure-menu-link">Home</a></li>
           <li class="pure-menu-item"><a ui-sref="play" class="pure-menu-link">Play</a></li>
           <li class="pure-menu-item"><a ui-sref="signup"class="pure-menu-link">Sign Up</a></li>
         </ul>
@@ -45,20 +47,20 @@
     <!-- Next is main content -->
     <div class="l-box-lrg pure-u-1 pure-u-md-1-5">
     </div>
-    <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+    <div class="l-box-lrg pure-u-1 pure-u-md-1-5">
       <div ui-view></div>
     </div>
     <div class="l-box-lrg pure-u-1 pure-u-md-1-5">
     </div>
 
     <!-- Next is footer -->
+<!--     <div class="l-box-lrg pure-u-1 pure-u-md-1-5">
+    </div>
+    <div class="l-box-lrg pure-u-1 pure-u-md-3-5"> -->
+      <!-- <div class="footer l-box is-center">Copyright + Project references</div> -->
+<!--     </div>
     <div class="l-box-lrg pure-u-1 pure-u-md-1-5">
-    </div>
-    <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
-      <h4 class="is-center">Copyright + Project references</h4>
-    </div>
-    <div class="l-box-lrg pure-u-1 pure-u-md-1-5">
-    </div>
+    </div> -->
 
   </section>
 

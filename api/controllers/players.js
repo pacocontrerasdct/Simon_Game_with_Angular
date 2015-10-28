@@ -1,5 +1,4 @@
 var Player = require('../models/Player');
-//var Game = require('../models/Game');
 
 // For dealing with Emails we need to create a mail object using the package installed 'nodemailer'
 var nodemailer = require('nodemailer');

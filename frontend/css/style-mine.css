@@ -3,7 +3,8 @@ html {
   font-family: 'arial', courier, sans-serif;
 }
 body {
-  background-color: hotpink;
+  /*background-color: #3f467c; Dark blue*/
+  background-color: #b3c7d6;
   font-size: 1.6em;
   margin: 0;
   color: black;
@@ -14,6 +15,9 @@ li {
 }
 span {
   margin-right: 10px;
+}
+.button-play {
+  margin-top: 10px;
 }
 
 @media screen and (min-width: 48em) {
