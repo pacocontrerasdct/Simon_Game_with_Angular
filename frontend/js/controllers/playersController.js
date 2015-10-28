@@ -1,12 +1,15 @@
 angular.module('SimonGameApp')
 .controller('playersController', playersController);
 
-playersController.$inject = ['$http'];
+// Injecting window for redirecting purposes
+playersController.$inject = ['$http', '$window'];
 
-function playersController($http){
+function playersController($http, $window){
   console.log('I am the frontend controller');
   var self = this;
   self.all = [];
+
+
 
 
   // function getWidth() {    
@@ -60,7 +63,8 @@ function playersController($http){
       .post('http://localhost:3000/players', self.newPlayer)
       .then(function(response) {
           console.log("Response after add player", response)
-          getPlayers();
+          // Using window.location I'm able to send to play after sign up
+          $window.location.href = '#/play';
       })
     self.newPlayer = {};
   }

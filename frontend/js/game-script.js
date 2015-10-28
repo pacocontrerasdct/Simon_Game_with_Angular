@@ -3,7 +3,12 @@ $(document).ready(function(){
 
   setUp();
 
+
 });
+
+
+
+
 
 function setUp(){
   numX = 0;
@@ -18,16 +23,19 @@ function setUp(){
   // $('main').append('<button id="startButton"><button id="quitButton">');
   // $('#parr1').append('Welcome to <em>Simon On -Line</em>, an online game based in an electronic game of memory skill invented by Ralph H. Baer and Howard J. Morrison, with software programming by Lenny Cope. Simon was launched in 1978 at Studio 54 in New York City and was an immediate success, becoming a pop culture symbol of the 1970s and 1980s.').toggleClass("visible");
   // $('#parr2').append('Instructions to play: The application has four colored areas inside of a black circle, each producing a particular blink when it is clicked or activated by the computer. A round in the game consists of the computer lighting up one or more areas in a random order, after which the player must reproduce that order by clicking the same areas. As the game progresses, the number of areas to be clicked increases.').toggleClass("visible");
-  $('#startButton').append('START').on('click', buildingBoard);
-  $('#quitButton').append('QUIT').on('click', quit);
+  $('#startButton').on('click', buildingBoard);
+  $('#quitButton').on('click', quit);
+
+  showBlinking();
+
 };
 
   // Declaring some variables
-  var squareContainer;
-  var squareTopLeft;
-  var squareTopRight;
-  var squareBottomLeft;
-  var squareBottomRight;
+  // var squareContainer;
+  // var squareTopLeft;
+  // var squareTopRight;
+  // var squareBottomLeft;
+  // var squareBottomRight;
   var randomPattern = [];
   var playerPattern = [];
   var playerName;
@@ -35,20 +43,41 @@ function setUp(){
   var numX = 0;
   var startTime;
   var levelPassed = 0;
+  var speedness = 2000;
+
+
+// For showing the pattern to newbee or a blind person
+function showBlinking(){
+  var instructions = [
+    'This is the top left square, which is color blue and sounds like this...',
+    'This is the top right square, which is color yellow and sounds like this...',
+    'This is the bottom left square, which is color red and sounds like this...',
+    'This is the bottom right square, which is color green and sounds like this...'
+  ];
+  $.each([1,2,3,4], function(index, element){      
+    time = index * 2000;
+    setTimeout(function(){
+      console.log('square id: ', element);
+      blink(element);   
+      $('# instruction-msg').html('<p>' + instructions[index] +'</p>');
+    }, time);
+  });
+};
+
 
 // Building Squares, or in others words css properties for colored divs
-function SquareFactory(backgroundColor, opacity, width, height, margin, padding, display, borderRadius, mozBorderRadius, webkitBorderRadius){
-  this.backgroundColor = backgroundColor;
-  this.opacity = opacity;
-  this.height = height;
-  this.width = width;
-  this.margin = margin;
-  this.padding = padding;
-  this.display = display;
-  this.borderRadius = borderRadius;
-  this.mozBorderRadius = mozBorderRadius;
-  this.webkitBorderRadius = webkitBorderRadius;
-};
+// function SquareFactory(backgroundColor, opacity, width, height, margin, padding, display, borderRadius, mozBorderRadius, webkitBorderRadius){
+//   this.backgroundColor = backgroundColor;
+//   this.opacity = opacity;
+//   this.height = height;
+//   this.width = width;
+//   this.margin = margin;
+//   this.padding = padding;
+//   this.display = display;
+//   this.borderRadius = borderRadius;
+//   this.mozBorderRadius = mozBorderRadius;
+//   this.webkitBorderRadius = webkitBorderRadius;
+// };
 
 function buildingBoard(){
  // // Building a container and the four div for each square of the board
@@ -87,13 +116,13 @@ function buildingBoard(){
 };
 
 // New player function with Name, max level, startTime from the beginning of game, record is a combination between levels passed and total time spent to pass them, playerPattern is the recording of the last pattern player did (helps to check with randomPattern)
-function NewPlayer(simonPlayer){ 
-  this.name = simonPlayer;
-  this.level = numX;
-  this.startTime = $.now() + 2627;
-  this.recordTime = ($.now()) - this.startTime;
-  this.playerPattern = playerPattern;
-};
+// function NewPlayer(simonPlayer){ 
+//   this.name = simonPlayer;
+//   this.level = numX;
+//   this.startTime = $.now() + 2627;
+//   this.recordTime = ($.now()) - this.startTime;
+//   this.playerPattern = playerPattern;
+// };
 
 function playerName(){
   // After showing board ask to player for a name
@@ -174,16 +203,12 @@ function randomizer(){
   // throught looping we get the DIVs with ids: #sqr1, #sqr2..
   // need doBlink to use them to make colors change on the board 
   $.each(randomPattern, function(index, element){
-    doBlink(index, element);
+      time = index * speedness;
+      console.log(time);
+      setTimeout(function(){
+        blink(element);
+      }, time);
   });
-}
-
-function doBlink(index, element){
-  time = index * 2000;
-  console.log(time);
-  setTimeout(function(){
-    blink(element);
-  }, time);
 }
 
 function blink(element){
@@ -196,7 +221,6 @@ function blink(element){
 
   setTimeout(function(){
     $('#sqr'+element+'.div'+element).toggleClass('div'+element+'light');
-    sound.stop();
     var sound = '';
   }, 300);
 };
