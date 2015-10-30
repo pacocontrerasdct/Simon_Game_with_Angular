@@ -1,30 +1,25 @@
   <div class="l-box-lrg">
-    <h1 class="splash-head">Im login</h1>
-    <h2 class="splash-subhead">This form is for allowing regular players to continue with his/her score and level. Name and email must match in the db to present info. Otherwise, player has opportunity to start from the beginning going to signup page</h2>
+    <h1 class="splash-head">Log in...</h1>
+    <h2 class="splash-subhead">Fill the form to log in and check what you have done with Simon</h2>
+    
     <form class="pure-form pure-form-stacked" id="checkPlayer"
           ng-submit='players.getPlayer()'>
-        <fieldset>
-            <label for="name">Name or alias</label>
-            <input id="name" type="text" placeholder="Your Name or an alias" required autofocus>
-            <label for="email">Your Email</label>
-            <input id="email" type="email" placeholder="Your Email">
 
-            <button class="pure-button" ui-sref="play">Log in</button>
-            <button class="pure-button" ui-sref="signup">New player?</button>
-        </fieldset>
+      <fieldset>       
+        <label for="login-name">Name or alias</label>
+        <input id="login-name" type="text" placeholder="Your Name or an alias"
+          ng-model='players.login.name' required autofocus>
+        
+        <label for="login-email">Your Email</label>
+        <input id="login-email" type="email" placeholder="Your Email"
+          ng-model='players.login.email' required>
+        
         <a ui-sref="reminder">Forgot your name or alias?</a>
+        <button type="submit" class="pure-button button-error accessible-btn-full"
+          >Log in</button>
+        <button class="pure-button button-error accessible-btn-full"
+          ui-sref="signup">New player?</button>
+      </fieldset>
+        
     </form>
   </div>
-
-
-
-<!--   <div id="hall-of-fame">
-    <ul>
-      <li ng-repeat="player in players.all">
-        <span>NAME: <b>{{ player.name }}</b></span>
-        <span>LEVEL: <em>{{ player.level }}</em></span>
-        <span>SCORE: <em>{{ player.score }}</em></span>
-      </li>
-    </ul>
-  </div> -->
-

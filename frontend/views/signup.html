@@ -1,7 +1,7 @@
 <div class="l-box-lrg">
 
-  <h1>Im signup</h1>
-  <h2>This form is just to record player basic data to recover score and level from db. Name and email must match in the db to present info. Otherwise, player has opportunity to start from the beginning</h2>
+  <h1 class="splash-head">Join us!</h1>
+  <h2>If you join us, next time to come back to play, you can recover your scores and levels reached and track your evolution playing the game. Otherwise, if you just want to play, press over the SIMON logo, at the top left corner of the screen and enjoy!</h2>
 
   <form class="pure-form pure-form-stacked" id="addPlayer"
           ng-submit='players.addPlayer()'>
@@ -11,10 +11,10 @@
       <label for="new-player-email">Your Email</label>
       <input id="new-player-email" type="email" placeholder="Your Email"
             ng-model='players.newPlayer.email' required>
-
-      <button type="submit" class="pure-button">Sign up</button>
+      <a ui-sref="welcome">Back</a>
+      <button type="submit" class="pure-button button-error accessible-btn-full">Sign up</button>
     </fieldset>
-    <a ui-sref="login">Back</a>
+    
   </form>
 
 </div>

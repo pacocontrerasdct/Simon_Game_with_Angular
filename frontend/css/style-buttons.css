@@ -1,10 +1,10 @@
 .div-size {
   width: 50%;
-  height: 100px;
+  height: 150px;
 }
 .square{
   width: 50%;
-  height: 160px;
+  height: 200px;
   float: left;
   z-index: 1;
   -webkit-border-radius: 0;
@@ -20,10 +20,10 @@
   border-left: solid #666666 1px;
 }
 .back-squares-div {
-  position: absolute;
-  width: 320px;
-  height: 320px;
+  width: 100%;
+  height: 400px;
   z-index: 0;
+  padding-bottom: 2em;
 }
 .div1 {    /*blue square*/
   background: #3498db;
@@ -32,6 +32,11 @@
   background-image: -ms-linear-gradient(top, #3498db, #106ea8);
   background-image: -o-linear-gradient(top, #3498db, #106ea8);
   background-image: linear-gradient(to bottom, #3498db, #106ea8);
+/*  border-radius: 10px 0px 0px 0px;
+  -moz-border-radius: 10px 0px 0px 0px;
+  -webkit-border-radius: 10px 0px 0px 0px;
+  border-top: 5px inset #2d3e50;
+  border-left: 5px inset #2d3e50;*/
 }
 
 .div1light {    /*blue square*/
@@ -45,20 +50,25 @@
 
 .div2 {    /*yellow square*/
   background: #d9d934;
-  background-image: -webkit-linear-gradient(top, #d9d934, #bfbf2e);
-  background-image: -moz-linear-gradient(top, #d9d934, #bfbf2e);
-  background-image: -ms-linear-gradient(top, #d9d934, #bfbf2e);
-  background-image: -o-linear-gradient(top, #d9d934, #bfbf2e);
-  background-image: linear-gradient(to bottom, #d9d934, #bfbf2e);
+  background-color: -webkit-linear-gradient(top, #d9d934, #bfbf2e);
+  background-color: -moz-linear-gradient(top, #d9d934, #bfbf2e);
+  background-color: -ms-linear-gradient(top, #d9d934, #bfbf2e);
+  background-color: -o-linear-gradient(top, #d9d934, #bfbf2e);
+  background-color: linear-gradient(to bottom, #d9d934, #bfbf2e);
+/*  border-radius:  0px 10px 0px 0px;
+  -moz-border-radius:  0px 10px 0px 0px;
+  -webkit-border-radius:  0px 10px 0px 0px;
+  border-top: 5px inset #2d3e50;
+  border-right: 5px inset #2d3e50;*/
 }
 
 .div2light {    /*yellow square*/
   background: #fafa3c;
-  background-image: -webkit-linear-gradient(top, #fafa3c, #d3d934);
-  background-image: -moz-linear-gradient(top, #fafa3c, #d3d934);
-  background-image: -ms-linear-gradient(top, #fafa3c, #d3d934);
-  background-image: -o-linear-gradient(top, #fafa3c, #d3d934);
-  background-image: linear-gradient(to bottom, #fafa3c, #d3d934);
+  background-color: -webkit-linear-gradient(top, #fafa3c, #d3d934);
+  background-color: -moz-linear-gradient(top, #fafa3c, #d3d934);
+  background-color: -ms-linear-gradient(top, #fafa3c, #d3d934);
+  background-color: -o-linear-gradient(top, #fafa3c, #d3d934);
+  background-color: linear-gradient(to bottom, #fafa3c, #d3d934);
 }
 
 .div3 {        /*red square*/
@@ -68,6 +78,11 @@
   background-image: -ms-linear-gradient(top, #d93434, #a61010);
   background-image: -o-linear-gradient(top, #d93434, #a61010);
   background-image: linear-gradient(to bottom, #d93434, #a61010);
+/*  border-radius: 0px 0px 10px 0px;
+  -moz-border-radius: 0px 0px 10px 0px;
+  -webkit-border-radius: 0px 0px 10px 0px;
+  border-bottom: 5px inset #2d3e50;
+  border-left: 5px inset #2d3e50;*/
 }
 
 .div3light {    /*red square*/
@@ -86,6 +101,11 @@
   background-image: -ms-linear-gradient(top, #70d934, #4ca610);
   background-image: -o-linear-gradient(top, #70d934, #4ca610);
   background-image: linear-gradient(to bottom, #70d934, #4ca610);
+/*  border-radius: 0px 0px 0px 10px;
+  -moz-border-radius: 0px 0px 0px 10px;
+  -webkit-border-radius: 0px 0px 0px 10px;
+  border-bottom: 5px inset #2d3e50;
+  border-right: 5px inset #2d3e50;*/
 }
 
 .div4light {    /*green square*/
@@ -95,4 +115,37 @@
   background-image: -ms-linear-gradient(top, #88fa3c, #76d934);
   background-image: -o-linear-gradient(top, #88fa3c, #76d934);
   background-image: linear-gradient(to bottom, #88fa3c, #76d934);
+}
+
+.accessible-btn {
+  color: #b3c7d6;
+  font-size: 200%;
+  width: 50%;
+  height: 100px;
+  float: left;
+  z-index: 1;
+  -webkit-box-shadow: 0px 1px 3px #0d0d0d;
+  -moz-box-shadow: 0px 1px 3px #0d0d0d;
+  box-shadow: 0px 1px 3px #0d0d0d;
+  padding: 10px 20px 10px 20px;
+  background-color: #2d3e50;
+  border: 5px solid rgba(255,0,255,.1);
+}
+
+.accessible-btn-full {
+  color: #b3c7d6;
+  font-size: 200%;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  width: 100%;
+  height: 100px;
+  float: left;
+  z-index: 1;
+  margin-bottom: 5px;
+  -webkit-box-shadow: 0px 1px 3px #0d0d0d;
+  -moz-box-shadow: 0px 1px 3px #0d0d0d;
+  box-shadow: 0px 1px 3px #0d0d0d;
+  padding: 10px 20px 10px 20px;
+  background-color: #2d3e50;
+  border: 5px solid rgba(255,0,255,.1);
 }

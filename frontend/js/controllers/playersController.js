@@ -9,22 +9,6 @@ function playersController($http, $window){
   var self = this;
   self.all = [];
 
-
-
-
-  // function getWidth() {    
-  //   var w = window,
-  //       d = document,
-  //       e = d.documentElement,
-  //       g = d.getElementsByTagName('body')[0],
-  //       x = w.innerWidth || e.clientWidth || g.clientWidth,
-  //       y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-  //   return x;
-  //   console.log(x)
-  // }
-  // getWidth();
-
-
   // Getting all names and scores to present a hall of fame
   function getPlayers() {
     $http
@@ -47,9 +31,25 @@ function playersController($http, $window){
       .get('http://localhost:3000/players/' + self.remindPlayer.email)
       .then(function(response) {
           console.log("Response after find player for email >>>", response.data.message)
-          // getPlayers();
       })
     self.remindPlayer = {};
+  }
+
+  // When log in
+  self.getPlayer = getPlayer;
+  self.login = {};
+
+  function getPlayer() {
+    console.log('inside getPlayer, alias: ', self.login.name);
+    console.log('inside getPlayer, email: ', self.login.email);
+    $http
+      .get('http://localhost:3000/player/' + self.login.name + '&'+ self.login.email)
+      .then(function(response) {
+          console.log("Get player Response!!! ", response);
+          // Using window.location I'm able to send to play after sign up
+          $window.location.href = '#/play';
+      })
+    self.login = {};
   }
 
   // When sign up a new player, app records data
