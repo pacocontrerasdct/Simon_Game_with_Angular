@@ -3,10 +3,11 @@ var path = require('path');
 var cors = require('cors');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var nodemailer = require('nodemailer');
 var app = express();
 
+// Connection to DB
 var mongoose = require('mongoose');
-
 mongoose.connect('mongodb://localhost:27017/simon-game-mean-app');
 
 var routes = require('./config/routes');

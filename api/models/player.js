@@ -8,4 +8,4 @@ var PlayerSchema = mongoose.Schema({
   createdAt: { type : Date, default: Date.now }
 });
 
-module.exports = mongoose.model('PlayerSchema', PlayerSchema);
+module.exports = mongoose.model('Player', PlayerSchema);
