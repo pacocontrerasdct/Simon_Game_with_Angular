@@ -1,0 +1,93 @@
+html {
+  font-size: 62.5%;
+  font-family: 'arial', courier, sans-serif;
+}
+body {
+  /*background-color: #3f467c; Dark blue*/
+  background-color: #b3c7d6;
+  font-size: 1.6em;
+  margin: 0;
+  color: black;
+}
+h1 {
+  font-size: 3em;
+  line-height: 105%;
+  color: white;
+  margin: 1.3em 0 0 0;
+}
+li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+span {
+  margin-right: 10px;
+}
+
+@media all {
+  /*Animation for game Over*/
+  .hinge-delay {
+    -webkit-animation-duration: 5s;
+    -webkit-animation-delay: 3s;
+    -webkit-animation-iteration-count: 1;
+
+    -moz-animation-duration: 5s;
+    -moz-animation-delay: 3s;
+    -moz-animation-iteration-count: 1;
+
+    animation-duration: 5s;
+    animation-delay: 3s;
+    animation-iteration-count: 1;
+  }
+  /*Div to show messages to player  */
+  #instruction-msg {
+    display: block;
+/*    position: absolute;
+    top: 50%;
+    left: 50%;
+    bottom: 50%;
+    right: 50%;*/
+    height: 100px;
+    text-align: center;
+    z-index: 99999;
+  }
+  .absolute-center {
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+  }
+  .absolute-bottom {
+    margin: auto;
+    position: fixed;
+    top: auto; left: 0; bottom: 0; right: 0;
+  }
+  .bottom100 {
+    bottom: 100px;
+  }
+  .height0 {
+    height: 0px;
+  }
+  .text-border{
+    text-shadow: 3px 0 1 #fff,
+                -3px 0 1 #fff,
+                0 3px 1 #fff,
+                0 -3px 1 #fff,
+                2px 2px 1 #fff,
+                -2px -2px 1 #fff,
+                2px -2px 1 #fff,
+                -2px 2px 1 #fff;
+  }
+  section {
+    margin: 0 auto;
+    padding-bottom: 0;
+    height: 0;
+  }
+  .margin-top30 {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .marginTop {
+    margin-top: 60px;
+  }
+}

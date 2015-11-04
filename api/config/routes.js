@@ -8,11 +8,16 @@ var playersController = require('../controllers/players');
 // http://127.0.0.1:3000/players
 router.route('/players')
 
-  //GET all players
+  // GET all players
   .get(playersController.getAll)
 
-  //POST a new player
+  // POST a new player
   .post(playersController.createPlayer);
+
+
+router.route('/players/:email')
+  // GET one player info for email it
+  .get(playersController.findPlayerData);
 
 
 router.route('/players/:id')

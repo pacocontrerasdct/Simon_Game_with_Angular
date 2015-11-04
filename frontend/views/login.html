@@ -1,13 +1,25 @@
-<section ng-controller="PlayersController as players">
-<h1>Im login</h1>
-<h2>This form is for allowing regular players to continue with his/her score and level. Name and email must match in the db to present info. Otherwise, player has opportunity to start from the beginning going to signup page</h2>
-
-  <form id="checkPlayer"
+  <div class="l-box-lrg">
+    <h1 class="splash-head">Log in...</h1>
+    <h2 class="splash-subhead">Fill the form to log in and check what you have done with Simon</h2>
+    
+    <form class="pure-form pure-form-stacked" id="checkPlayer"
           ng-submit='players.getPlayer()'>
-    <input type="text" ng-model="" placeholder="Name or Alias">
-    <input type="text" ng-model="" placeholder="Email">
-    <button>log in</button>
-    <button ui-sref="signup">New player?</button>
-  </form>
 
-</section>
+      <fieldset>       
+        <label for="login-name">Name or alias</label>
+        <input id="login-name" type="text" placeholder="Your Name or an alias"
+          ng-model='players.login.name' required autofocus>
+        
+        <label for="login-email">Your Email</label>
+        <input id="login-email" type="email" placeholder="Your Email"
+          ng-model='players.login.email' required>
+        
+        <a ui-sref="reminder">Forgot your name or alias?</a>
+        <button type="submit" class="pure-button button-error accessible-btn-full"
+          >Log in</button>
+        <button class="pure-button button-error accessible-btn-full"
+          ui-sref="signup">New player?</button>
+      </fieldset>
+        
+    </form>
+  </div>
