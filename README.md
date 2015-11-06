@@ -63,7 +63,7 @@ For my css styles I decided to use purecss because of its simplicity but at the 
 I refactored a lot the script file that contents the main functions for playing the game, and even change some function behaviours for simplicity issues, but I feel that I should have used Angular directives instead of jQuery resources to get working more of the Angular power.
 Because of lack of time, I mess with some kind of mock authentication (something temporary) to give users the sensation of being using a more complex system application. Instead, I should have used a middleware resource like passport.js.
 # Future improvement
-In terms of authentication, as I said in the previous parragraph, implementing passport.js is a must so I will try to get it working first.
+In terms of authentication, as I said in the previous paragraph, implementing passport.js is a must so I will try to get it working first.
 Another improvement for the app I think it would be interesting to have is an 'off' button to turn all elemets in the page into black color, allowing normal people playing the game just as a blind person will do.
 
 In relation to this, a view page presenting some statistics could be interesting: average of blind/normal people players, compare scores...
