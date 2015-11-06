@@ -1,7 +1,9 @@
 angular.module('SimonGameApp')
 .controller('playersController', playersController);
 
-// Injecting window for redirecting purposes
+// Injecting window for redirecting purposes as a way of mocking a login/ signup
+// system, but know it's not the right way. Should use passportJS in the back-end
+
 playersController.$inject = ['$http', '$window'];
 
 function playersController($http, $window){
@@ -46,7 +48,7 @@ function playersController($http, $window){
       .get('http://localhost:3000/player/' + self.login.name + '&'+ self.login.email)
       .then(function(response) {
           console.log("Get player Response!!! ", response);
-          // Using window.location I'm able to send to play after sign up
+          // Using window.location I'm able to send to play after log in
           $window.location.href = '#/play';
       })
     self.login = {};
