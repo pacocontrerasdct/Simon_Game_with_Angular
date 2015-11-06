@@ -9,6 +9,7 @@ But this time I wanted to build it thinking in the blind, and with mobile first 
 # Why did I build this?
 Nowadays, we are living a digital revolution in which the Internet is connecting people and things, and digital data visualization is helping to organizations, both public and private, to understand what drives human beings in their social relationships and behaviours.
 There is a clear tendency to use images to communicate ideas and concepts, but this trend is not having into account to a part of the society, the blind.
+
 ![Sharing Data Visualization | MIT Technology Review](https://img.modern-house.us/medium/3/data%20visualization.jpg)
 
 If we speak about games, videogames to be more accurate, the gap is even wider, and while spectacular games like Assassins Creed, Halo5 or Need for Speed make gamers hit the roof, visually-impaired gamers can't enjoy it because of lack of accessibility. 
