@@ -14,7 +14,7 @@ There is a clear tendency to use images to communicate ideas and concepts, but t
 
 If we speak about games, videogames to be more accurate, the gap is even wider, and while spectacular games like Assassins Creed, Halo5 or Need for Speed make gamers hit the roof, visually-impaired gamers can't enjoy it because of lack of accessibility. 
 
-Indeed, I did a small research about games which have into account this disability, and the amount of them in comparation with normal ones is ridiculous.
+Indeed, I did a small research about games which have into account this disability, and the amount of them in comparison with normal ones is ridiculous.
 There is a recent [article][bl-art-1] about accessibility in terms of games which have into account visually-impaired people, that shows there is still a long way to make possible the complete integration between normal people and the blind.
 Only the VoiceOver option that Apple implements in its devices allow blind gamers play to those games which are more or less accesible or strictly built as sound games. Indeed, there is an online [community for the blind] [bl-art-2] which is especifically related to this feature of Apple products.
 
