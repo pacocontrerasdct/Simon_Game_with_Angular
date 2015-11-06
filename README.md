@@ -74,7 +74,7 @@ A multiplayer option is another interesting improvement to allow group of friend
 - [Data Visualization and the Blind][dataVisualizationAndTheBlind]
 
 
-[]: <links to external sites>
+<links to external sites>
 [bl-art-1]: <http://toucharcade.com/2015/05/06/blind-gamers-are-embracing-developers-who-have-an-eye-for-accessibility>
 [bl-art-2]: <http://www.applevis.com>
 [bl-art-3]: <http://www.polygon.com/features/2013/8/6/4550490/blind-games-rock-vibe>
