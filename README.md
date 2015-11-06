@@ -23,6 +23,7 @@ Since that period, I feel some kind of sensitivity to this issue.
 # Game Mechanics
 Simon is a game which challenge the player memory.
 The mechanics of the game is simple: there is a board divided into four square sections.
+
 ![Screenshot: The game board](http://imgur.com/bUMaYdc.png)
 
 Each one has a different color (blue, yellow, red and green)
@@ -43,6 +44,7 @@ Then, like in the original game, each colored square in the board has a specific
 There is no winner at the end, but there is a hall of fame in which it is listed the ten logged players who have the highest scores.
 
 ![screenshot: Hall of fame](http://imgur.com/bUMaYdc)
+
 # Technologies I've used
 My aim was to use a full-stack architecture based in one of the frameworks I learnt in this course to build a working game application with at least the basic functionality to be played. 
 We only had 7 days to develop the app before the presentation to the class so there were not much time to take it further than the MVP.
@@ -72,7 +74,7 @@ A multiplayer option is another interesting improvement to allow group of friend
 - [Data Visualization and the Blind][dataVisualizationAndTheBlind]
 
 
-[//]: <links to external sites>
+[]: <links to external sites>
 [bl-art-1]: <http://toucharcade.com/2015/05/06/blind-gamers-are-embracing-developers-who-have-an-eye-for-accessibility>
 [bl-art-2]: <http://www.applevis.com>
 [bl-art-3]: <http://www.polygon.com/features/2013/8/6/4550490/blind-games-rock-vibe>
