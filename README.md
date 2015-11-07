@@ -1,6 +1,6 @@
 # Simon for the blind
 
-For my final project at the General Assembly course I decided to revisit my first project which was a javascript online version of SIMON, a famous electronic game of memory skill from the late 70's.
+For my final project at the General Assembly course I decided to revisit my first project which was a JavaScript online version of SIMON, a famous electronic game of memory skill from the late 70's.
 
 ![Original Simon Game Board](https://upload.wikimedia.org/wikipedia/commons/9/99/OriginalSimon.jpg)
 
