@@ -1,10 +1,10 @@
 # Simon for the blind
 
-For my final project at the General Assembly course I decided to revisit my first project which was a JavaScript online version of SIMON, a famous electronic game of memory skill from the late 70's.
+For my final project at General Assembly, I decided to revisit my first project which was a JavaScript online version of SIMON, a famous electronic game of memory skill from the late 70's.
 
 ![Original Simon Game Board](https://upload.wikimedia.org/wikipedia/commons/9/99/OriginalSimon.jpg)
 
-But this time I wanted to build it thinking in the blind, and with mobile first design to allow blind people play the game taking advantage of the mobile device touchscreen capability.
+But this time I wanted to build it thinking of the blind, and with a mobile first design approach it allowed blind people to play the game taking advantage of the mobile device touchscreen capability.
 
 # Why did I build this?
 Nowadays, we are living a digital revolution in which the Internet is connecting people and things, and digital data visualization is helping to organizations, both public and private, to understand what drives human beings in their social relationships and behaviours.
