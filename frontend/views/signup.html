@@ -1,1 +1,20 @@
-<h1>Im signup</h1>
+<div class="l-box-lrg">
+
+  <h1>Im signup</h1>
+  <h2>This form is just to record player basic data to recover score and level from db. Name and email must match in the db to present info. Otherwise, player has opportunity to start from the beginning</h2>
+
+  <form class="pure-form pure-form-stacked" id="addPlayer"
+          ng-submit='players.addPlayer()'>
+    <fieldset>
+      <label for="new-player-name">Name or alias</label>
+      <input id="new-player-name" type="text" placeholder="Your Name or an alias" ng-model='players.newPlayer.name' required>
+      <label for="new-player-email">Your Email</label>
+      <input id="new-player-email" type="email" placeholder="Your Email"
+            ng-model='players.newPlayer.email' required>
+
+      <button type="submit" class="pure-button">Sign up</button>
+    </fieldset>
+    <a ui-sref="login">Back</a>
+  </form>
+
+</div>

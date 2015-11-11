@@ -5,16 +5,27 @@ angular
 
 function MainRouter($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
-
+  
+  $stateProvider
+    .state('login', {
+      url: '/',
+      templateUrl: 'views/login.html'
+    }),
   $stateProvider
     .state('signup', {
       url: '/signup',
-      templateUrl: 'signup.html'
+      templateUrl: 'views/signup.html'
     }),
   $stateProvider
-    .state('index', {
-      url: '/',
-      templateUrl: 'index.html'
+    .state('reminder', {
+      url: '/reminder',
+      templateUrl: 'views/reminder.html'
+    }),
+  $stateProvider
+    .state('play', {
+      url: '/play',
+      templateUrl: 'views/play.html'
     })
 
 };
+
