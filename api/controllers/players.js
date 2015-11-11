@@ -1,5 +1,5 @@
-var Player = require('../models/player');
-//var game = require('../models/game');
+var Player = require('../models/Player');
+//var Game = require('../models/Game');
 
 // GET ALL PLAYERS
 function getAll(request, response) {  
@@ -11,6 +11,8 @@ function getAll(request, response) {
 
 // POST A NEW PLAYER
 function createPlayer(request, response) {
+  console.log('Hitting createPlayer at api');
+  console.log(request.body)
   var newPlayer = new Player(request.body);
   newPlayer.save(function(error) {
     if(error) response.json({messsage: 'Could not create new player b/c:' + error});
@@ -20,11 +22,12 @@ function createPlayer(request, response) {
 
 // GET A PLAYER
 function getPlayer(request, response) {
-  var id = request.params.id;
-  Player.findById({_id: id}, function(error, player) {
-    if(error) response.json({message: 'Could not find player b/c:' + error});
-    response.json({player: player});
-  }).select('-__v');
+  console.log('Hitting getPlayer at api')
+  // var id = request.params.id;
+  // Player.findById({_id: id}, function(error, player) {
+  //   if(error) response.json({message: 'Could not find player b/c:' + error});
+  //   response.json({player: player});
+  // }).select('-__v');
 }
 
 // UPDATE A PLAYER
