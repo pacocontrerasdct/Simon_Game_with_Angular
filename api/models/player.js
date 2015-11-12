@@ -6,6 +6,13 @@ var PlayerSchema = mongoose.Schema({
   level: { type : Number, default: 1 },
   score: { type : Number, default: 0 },
   createdAt: { type : Date, default: Date.now }
+
+  // games: {
+  //   level: { type : Number, default: 1 },
+  //   score: { type : Number, default: 0 },
+  //   createdAt: { type : Date, default: Date.now }
+  // }
+  
 });
 
 module.exports = mongoose.model('Player', PlayerSchema);

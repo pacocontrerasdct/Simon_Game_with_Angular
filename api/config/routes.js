@@ -7,7 +7,6 @@ var playersController = require('../controllers/players');
 
 // http://127.0.0.1:3000/players
 router.route('/players')
-
   // GET all players
   .get(playersController.getAll)
 
@@ -19,17 +18,10 @@ router.route('/players/:email')
   // GET one player info for email it
   .get(playersController.findPlayerData);
 
-
-router.route('/players/:id')
-
+router.route('/player/:name&:email')
   // GET return specific player
-  .get(playersController.getPlayer)
+  .get(playersController.getPlayer);
 
-  // PATCH update existing player
-  .patch(playersController.updatePlayer)
-
-  // DELETE remove specific player from DB
-  .delete(playersController.removePlayer);
 
 
 module.exports = router
