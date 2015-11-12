@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Paco Contreras",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.1",
@@ -17,5 +17,5 @@
     "nodemailer": "0.7.1"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "Simon Game app"
 }
