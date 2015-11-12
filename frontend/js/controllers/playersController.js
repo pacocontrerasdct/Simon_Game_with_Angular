@@ -20,7 +20,7 @@ function playersController($http, $window){
         self.all = response.data.players;
       });
   }
-  getPlayers();
+  //getPlayers();
 
   // When log in, cheking in db if player already exist
   self.selectPlayer = selectPlayer;

@@ -4,6 +4,8 @@ $(document).ready(function(){
 });
 
 function setUp() {
+  console.log('Hi setUp');
+
   // Variables to play a new game
   var computerPattern = [];
   var computer = [];
@@ -14,24 +16,47 @@ function setUp() {
   var soundPref = 'sound_s_';
   // This is the speed of the computer pattern (can be change to adjust complexity)
   var speedness = 1000;
-  // To present different messages to Player use a switch comparation
-  var messageToPlayer;
-  
-  function message(messageToPlayer){
-    switch (messageToPlayer) {
-      case "gameOver":
-        $('#instruction-msg').html('<h1 class="animated zoomIn">GAME OVER</h1>');
-        break;
-      default:
-        $('h1').remove();
-    }
+
+  function resetVariables() {
+    // Variables to play a new game
+    var computerPattern = [];
+    var computer = [];
+    var startTime;
+    var level = 0;
+    var score = 0;
+    // This is sound prefix name for choosing length: s = 250ms; m = 500ms; l = 1000ms
+    var soundPref = 'sound_s_';
+    // This is the speed of the computer pattern (can be change to adjust complexity)
+    var speedness = 1000;
   }
 
 
-  // $('#startButton').one('click', showBlinking);
+
+
+  
+
+      // To present different messages to Player use a switch comparation
+      var messageToPlayer;
+      
+      function message(messageToPlayer){
+        switch (messageToPlayer) {
+          case "gameOver":
+            console.log('inside message')
+            $('#instruction-msg').html('<h1 class="animated zoomOut">GAME OVER</h1>');
+            resetVariables();
+          default:
+            $('h1').remove();
+        }
+      }
+
   $('#startButton').on('click', newPattern);
   $('#quitButton').on('click', showBlinking);
-  $('h1').remove();
+  // $('h1').remove();
+
+
+  function hello(){
+    console.log('hello');
+  }
 
   // For showing the pattern to newbee or a blind person
   function showBlinking(){
@@ -53,7 +78,7 @@ function setUp() {
           blink(element);   
           $('#instruction-msg').html('<h1 class="animated zoomIn">' + instructions[index] +'</h1>');
         } else {
-          setUp();
+          $('h1').remove();
         }
       }, time);
     });
@@ -174,6 +199,7 @@ function setUp() {
       finishTime = $.now(); 
       console.log('This game finishes at: ', finishTime);
       // I have to clean 'computerPattern'
+      // debugger;
       gameOver();
     }
     console.log('end of compare function computer is: ', computer);
@@ -189,7 +215,10 @@ function setUp() {
     startTime;
     level = 0;
     score = 0;
-    message('gameOver');
+    $('#instruction-msg').html('<h1 class="animated zoomIn">GAME OVER</h1>');
+    setTimeout(function(){
+      message('gameOver');
+    }, 3000);
   }
 
   // This function close the window and finishes the game

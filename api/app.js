@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 
 // Connecting remotly using mongoLab or connecting locally to my DB
 var mongoUri =  process.env.MONGOLAB_URI || 'mongodb://localhost:27017/simon-game-mean-app';
-moongoose.connect(mongoUri);
+mongoose.connect(mongoUri);
 
 var routes = require('./config/routes');
 
