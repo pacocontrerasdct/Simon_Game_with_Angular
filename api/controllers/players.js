@@ -1,5 +1,4 @@
 var Player = require('../models/Player');
-//var Game = require('../models/Game');
 
 // For dealing with Emails we need to create a mail object using the package installed 'nodemailer'
 var nodemailer = require('nodemailer');
@@ -9,11 +8,10 @@ var transport = nodemailer.createTransport("SMTP", {
     secureConnection: true, // use SSL
     port: 465, // port for secure SMTP
     auth: {
-        user: "simon.game.app@gmail.com",
-        pass: "pPZNAlqX7LMemUppNv3"
+        user: EMAIL_SIMON,
+        pass: PASSWORD_EMAIL_SIMON
     }
 });
-
 
 // GET ALL PLAYERS
 function getAll(request, response) {  
@@ -70,36 +68,20 @@ function createPlayer(request, response) {
 // GET A PLAYER
 function getPlayer(request, response) {
   console.log('Hitting getPlayer at api')
-  // var id = request.params.id;
-  // Player.findById({_id: id}, function(error, player) {
-  //   if(error) response.json({message: 'Could not find player b/c:' + error});
-  //   response.json({player: player});
-  // }).select('-__v');
-}
+  console.log('coming from :name', request.params.name)
+  console.log('coming from :email', request.params.email)
+  var email = request.params.email;
+  var alias = request.params.name;
 
-// UPDATE A PLAYER
-function updatePlayer(request, response) {
-  var id = request.params.id;
-  Player.findById({_id: id}, function(error, player) {
+  Player.find({'email': email, 'name': alias}, function(error, player) {
     if(error) response.json({message: 'Could not find player b/c:' + error});
-    if(request.body.name) player.name = request.body.name;
-    if(request.body.level) player.start = request.body.level;
-    if(request.body.score) player.end = request.body.score;
-
-    player.save(function(error) {
-      if(error) response.json({messsage: 'Could not update player details b/c:' + error});
-      response.json({message: 'Player successfully updated', player: player});
-    });
-  }).select('-__v');
-}
-
-// DELETE A PLAYER
-function removePlayer(request, response) {
-  var id = request.params.id;
-  Player.remove({_id: id}, function(error) {
-    if(error) response.json({message: 'Could not delete player b/c:' + error});
-
-    response.json({message: 'Player successfully deleted'});
+      // If no error 'player' is the object we where looking for
+      var dbName = player[0].name;
+      if(dbName == alias) { // If name at DB and name from input are same
+        response.json({player: player});
+      } else {
+        response.json({message: 'User is not registered or email or password was wrong'});
+      }
   }).select('-__v');
 }
 
@@ -108,7 +90,5 @@ module.exports = {
   getAll: getAll,
   createPlayer: createPlayer,
   getPlayer: getPlayer,
-  updatePlayer: updatePlayer,
-  removePlayer: removePlayer,
   findPlayerData: findPlayerData
 }

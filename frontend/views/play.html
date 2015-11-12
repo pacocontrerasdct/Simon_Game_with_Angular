@@ -1,3 +1,37 @@
-<div class="l-box-lrg">
-  <h1>Im going to play</h1>
+<script type="text/javascript" src="js/script.js"></script>
+<style type="text/css">
+  .l-box-lrg {
+    padding: 0em;
+    /*border-bottom: 1px solid rgba(0,0,0,0.1);*/
+  }
+</style>
+<div class="animated bounceInDown">
+  <div class="back-squares-div marginTop">
+    <div id="sqr1" data-numberSquare="1" class="div-size square div1">
+      <audio preload="auto" class="sound_s_1">
+        <source src="sounds/sound_s_1.mp3"  type="audio/mpeg"/>
+      </audio>
+    </div>
+    <div id="sqr2" data-numberSquare="2"  class="div-size square div2">
+      <audio preload="auto" class="sound_s_2">
+        <source src="sounds/sound_s_2.mp3"  type="audio/mpeg"/>
+      </audio>
+    </div>
+    <div id="sqr3" data-numberSquare="3"  class="div-size square div3">
+      <audio preload="auto" class="sound_s_3">
+        <source src="sounds/sound_s_3.mp3"  type="audio/mpeg"/>
+      </audio>      
+    </div>
+    <div id="sqr4" data-numberSquare="4"  class="div-size square div4">
+      <audio preload="auto" class="sound_s_4">
+        <source src="sounds/sound_s_4.mp3"  type="audio/mpeg"/>
+      </audio>      
+    </div>
+  </div>
 </div>
+<div class="buttons-div-play-page animated bounceInUp">
+  <button id="startButton" class="button-error pure-button accessible-btn">START</button>
+  <button id="quitButton" class="button-error pure-button accessible-btn">TRY</button>
+</div>
+<div id="instruction-msg" class="absolute-center"></div>
+

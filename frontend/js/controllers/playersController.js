@@ -1,26 +1,15 @@
 angular.module('SimonGameApp')
 .controller('playersController', playersController);
 
-playersController.$inject = ['$http'];
+// Injecting window for redirecting purposes as a way of mocking a login/ signup
+// system, but know it's not the right way. Should use passportJS in the back-end
 
-function playersController($http){
+playersController.$inject = ['$http', '$window'];
+
+function playersController($http, $window){
   console.log('I am the frontend controller');
   var self = this;
   self.all = [];
-
-
-  // function getWidth() {    
-  //   var w = window,
-  //       d = document,
-  //       e = d.documentElement,
-  //       g = d.getElementsByTagName('body')[0],
-  //       x = w.innerWidth || e.clientWidth || g.clientWidth,
-  //       y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-  //   return x;
-  //   console.log(x)
-  // }
-  // getWidth();
-
 
   // Getting all names and scores to present a hall of fame
   function getPlayers() {
@@ -31,7 +20,7 @@ function playersController($http){
         self.all = response.data.players;
       });
   }
-  getPlayers();
+  //getPlayers();
 
   // When log in, cheking in db if player already exist
   self.selectPlayer = selectPlayer;
@@ -44,9 +33,25 @@ function playersController($http){
       .get('http://localhost:3000/players/' + self.remindPlayer.email)
       .then(function(response) {
           console.log("Response after find player for email >>>", response.data.message)
-          // getPlayers();
       })
     self.remindPlayer = {};
+  }
+
+  // When log in
+  self.getPlayer = getPlayer;
+  self.login = {};
+
+  function getPlayer() {
+    console.log('inside getPlayer, alias: ', self.login.name);
+    console.log('inside getPlayer, email: ', self.login.email);
+    $http
+      .get('http://localhost:3000/player/' + self.login.name + '&'+ self.login.email)
+      .then(function(response) {
+          console.log("Get player Response!!! ", response);
+          // Using window.location I'm able to send to play after log in
+          $window.location.href = '#/play';
+      })
+    self.login = {};
   }
 
   // When sign up a new player, app records data
@@ -60,7 +65,8 @@ function playersController($http){
       .post('http://localhost:3000/players', self.newPlayer)
       .then(function(response) {
           console.log("Response after add player", response)
-          getPlayers();
+          // Using window.location I'm able to send to play after sign up
+          $window.location.href = '#/play';
       })
     self.newPlayer = {};
   }
