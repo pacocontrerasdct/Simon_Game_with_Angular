@@ -5,14 +5,20 @@ $(document).ready(function(){
 
 function setUp() {
   console.log('Hi setUp');
-
+  
+  // Message to the blind about the playing screen
+  hello();
+  
   // Variables to play a new game
   var computerPattern = [];
   var computer = [];
   var startTime;
   var level = 0;
+  var delay = 0;
+  // This is a prefix name for choosing level sound file:
+  var levelPref = 'sound_for_level_';
   var score = 0;
-  // This is sound prefix name for choosing length: s = 250ms; m = 500ms; l = 1000ms
+  // This is a prefix name for choosing length: s = 250ms; m = 500ms; l = 1000ms
   var soundPref = 'sound_s_';
   // This is the speed of the computer pattern (can be change to adjust complexity)
   var speedness = 1000;
@@ -24,16 +30,7 @@ function setUp() {
     var startTime;
     var level = 0;
     var score = 0;
-    // This is sound prefix name for choosing length: s = 250ms; m = 500ms; l = 1000ms
-    var soundPref = 'sound_s_';
-    // This is the speed of the computer pattern (can be change to adjust complexity)
-    var speedness = 1000;
   }
-
-
-
-
-  
 
       // To present different messages to Player use a switch comparation
       var messageToPlayer;
@@ -51,21 +48,34 @@ function setUp() {
 
   $('#startButton').on('click', newPattern);
   $('#quitButton').on('click', showBlinking);
-  // $('h1').remove();
 
-
-  function hello(){
-    console.log('hello');
+  function hello(){   
+    var sound = $('.speech_description_play_page')[0];
+    sound.currentTime = 0;
+    sound.play();
+    sound = '';
+    setTimeout(function(){
+    sound = $('.speech_how_sound_squares_1')[0];
+    sound.currentTime = 0;
+    sound.play();
+    sound = '';
+    }, 2000);
+    setTimeout(function(){
+    sound = $('.speech_how_sound_squares_2')[0];
+    sound.currentTime = 0;
+    sound.play();
+    sound = '';
+    }, 2000);
   }
 
   // For showing the pattern to newbee or a blind person
   function showBlinking(){
 
     var instructions = [
-      'This is the top left square, which is color blue and sounds like this...',
-      'This is the top right square, which is color yellow and sounds like this...',
-      'This is the bottom left square, which is color red and sounds like this...',
-      'This is the bottom right square, which is color green and sounds like this...',
+      'sound1_top_left_squ',
+      'sound2_top_right_squ',
+      'sound3_bottom_left_squ',
+      'sound4_bottom_right_squ',
       'Now I\'m going to show you the different sounds that every square in the game does when blinks',
       'Keep in mind that repeating that sounds in the same order is going to allow you to pass to the next level in the game'
     ];
@@ -75,12 +85,13 @@ function setUp() {
       setTimeout(function(){
         console.log('square id: ', element);
         if(element != 5) {
-          blink(element);   
-          $('#instruction-msg').html('<h1 class="animated zoomIn">' + instructions[index] +'</h1>');
-        } else {
-          $('h1').remove();
+          var sound = $('.'+ instructions[index] )[0];
+          sound.currentTime = 0;
+          sound.play();
+          sound = '';
+          blink(element, delay);
         }
-      }, time);
+      }, time + delay);
     });
   };
 
@@ -116,7 +127,7 @@ function setUp() {
         time = index * speedness;
         console.log("This time: ",time);
         setTimeout(function(){
-          blink(element);
+          blink(element, delay);
         }, time);
     });
 
@@ -129,18 +140,29 @@ function setUp() {
     addListeners();
   }
 
-  function blink(element){
+  function blink(element, delay){
     // Getting window element, toggling class to make it enlightened
     $('#sqr'+element+'.div'+element).toggleClass('div'+element+'light');
-    // Playing sound associated to that element 
-    var sound = $('.' + soundPref + element)[0];
-    sound.currentTime = 0;
-    sound.play();
+    
+    // // Playing sound associated to that element 
+    // var sound = $('.' + soundPref + element)[0];
+    // sound.currentTime = 0;
+    // sound.play();
+    
+    setTimeout(function(){
+      // Playing sound associated to that element 
+      var sound = $('.' + soundPref + element)[0];
+      sound.currentTime = 0;
+      sound.play();
+      var sound = '';
+    }, delay);
+
+
     // Calling toggleClass again to 'switch off' square, and clear var 'sound'
     setTimeout(function(){
       $('#sqr'+element+'.div'+element).toggleClass('div'+element+'light');
       var sound = '';
-    }, 600);
+    }, 600 + delay);
   };
 
   // On player turn put listeners to check if his/her pattern match computer one
@@ -184,6 +206,13 @@ function setUp() {
         // There is no more values in the array, so player go to next level
         level = level + 1;
         $('#instruction-msg').html('<h1 class="animated zoomIn">LEVEL: ' +level+'</h1>');
+
+        // Playing sound associated to that level 
+        var sound = $('.' + levelPref + level)[0];
+        sound.currentTime = 0;
+        sound.play();
+        sound = '';
+
         // add Score and Level To DB?
         // Continue Game next level
         removeListeners();
@@ -219,6 +248,10 @@ function setUp() {
     setTimeout(function(){
       message('gameOver');
     }, 3000);
+    var sound = $('.game-over')[0];
+    sound.currentTime = 0;
+    sound.play();
+    sound = '';
   }
 
   // This function close the window and finishes the game
