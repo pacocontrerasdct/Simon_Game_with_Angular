@@ -4,20 +4,20 @@ $(document).ready(function(){
 });
 
 function setUp() {
-  console.log('Hi setUp');
-  
-  // Message to the blind about the playing screen
-  hello();
-  
+
   // Variables to play a new game
   var computerPattern = [];
   var computer = [];
   var startTime;
   var level = 0;
+  var score = 0;
   var delay = 0;
+  var sound = '';
+  
+  // To present different messages to Player use a switch comparation
+  var messageToPlayer;
   // This is a prefix name for choosing level sound file:
   var levelPref = 'sound_for_level_';
-  var score = 0;
   // This is a prefix name for choosing length: s = 250ms; m = 500ms; l = 1000ms
   var soundPref = 'sound_s_';
   // This is the speed of the computer pattern (can be change to adjust complexity)
@@ -25,89 +25,129 @@ function setUp() {
 
   function resetVariables() {
     // Variables to play a new game
-    var computerPattern = [];
-    var computer = [];
-    var startTime;
-    var level = 0;
-    var score = 0;
+    console.log("inside reset");
+    computerPattern = [];
+    computer = [];
+    startTime;
+    level = 0;
+    score = 0;
+    delay = 0;
+    sound = '';
+    console.log(computerPattern);
   }
 
-      // To present different messages to Player use a switch comparation
-      var messageToPlayer;
-      
-      function message(messageToPlayer){
-        switch (messageToPlayer) {
-          case "gameOver":
-            console.log('inside message')
-            $('#instruction-msg').html('<h1 class="animated zoomOut">GAME OVER</h1>');
-            resetVariables();
-          default:
-            $('h1').remove();
-        }
-      }
+  // Description about the playing screen
+  message("play-screen-description");
+
+  function message(messageToPlayer){
+    switch (messageToPlayer) {
+      case "gameOver":
+        console.log('inside message')
+        $('#instruction-msg').html('<h1 class="animated zoomOut">GAME OVER</h1>');
+        $('h1').remove();
+        break;
+      case "play-screen-description":
+        sound = $('#speech_description_play_page')[0];
+        sound.currentTime = 0;
+        sound.play();
+        sound = '';
+        break;
+      case "how-to-play":
+        sound = $('#speech_description_how_to_play')[0];
+        sound.currentTime = 0;
+        sound.play();
+        sound = '';
+        break;
+      // case "countDown":
+      //   countDown();
+        // sound = $('#sound_countdown')[0];
+        // sound.currentTime = 0;
+        // sound.play();
+        // sound = '';
+        // break;
+      case "stop-description":
+        sound = $('#speech_description_play_page');
+        sound[0].pause();
+        sound[0].load();
+        break;
+      default:
+        $('h1').remove();
+        sound = $('#sounds')[0];
+        sound.currentTime = 0;
+        sound.stop();
+        sound = '';
+    }
+  }
 
   $('#startButton').on('click', newPattern);
   $('#quitButton').on('click', showBlinking);
 
-  function hello(){   
-    var sound = $('.speech_description_play_page')[0];
-    sound.currentTime = 0;
-    sound.play();
-    sound = '';
-    setTimeout(function(){
-    sound = $('.speech_how_sound_squares_1')[0];
-    sound.currentTime = 0;
-    sound.play();
-    sound = '';
-    }, 2000);
-    setTimeout(function(){
-    sound = $('.speech_how_sound_squares_2')[0];
-    sound.currentTime = 0;
-    sound.play();
-    sound = '';
-    }, 2000);
-  }
-
   // For showing the pattern to newbee or a blind person
   function showBlinking(){
+    
+    // Stop description of the screen
+    message("stop-description");
+    // Play description how to play
+    message("how-to-play");
+
+
 
     var instructions = [
-      'sound1_top_left_squ',
-      'sound2_top_right_squ',
-      'sound3_bottom_left_squ',
-      'sound4_bottom_right_squ',
-      'Now I\'m going to show you the different sounds that every square in the game does when blinks',
-      'Keep in mind that repeating that sounds in the same order is going to allow you to pass to the next level in the game'
+      'Click on squares',
+      'To check how they works',
+      'Each one blinks',
+      'And have a different sound',
+      ''
     ];
 
     $.each([1,2,3,4,5], function(index, element){      
       time = index * speedness;
       setTimeout(function(){
         console.log('square id: ', element);
-        if(element != 5) {
-          var sound = $('.'+ instructions[index] )[0];
-          sound.currentTime = 0;
-          sound.play();
-          sound = '';
-          blink(element, delay);
-        }
-      }, time + delay);
+          $('#instruction-msg').html('<h1 class="animated slideInDown">'+ instructions[index] +'</h1>');
+      }, time);
     });
+
+    $.each([1,2,3,4], function(index, element){
+      $('#sqr' + element).on('click', function() {
+        blink(element, delay);
+      })
+      console.log('adding listener to how to, element ', element)
+    });
+    
+    setTimeout(function(){
+      $('h1').remove();
+    }, time);
+
+
+
+
   };
 
   // Countdown to start the game
   function countDown(){ 
-    $.each([3,2,1,""], function (index, element){
+    $.each([3,2,1,"GO",""], function (index, element){
       setTimeout(function(){
         $('#instruction-msg').html('<h1 class="animated zoomIn">'+ element +'</h1>');
-      }, (index+1) * 1000);
+      }, (index+1) * 760);
     });
+    sound = $('#sound_countdown')[0];
+    sound.currentTime = 0;
+    sound.play();
+    sound = '';
     $('h1').remove();
   }
 
 
   // Function to create pattern for the game
-  function newPattern() {  
+  function newPattern() {
+    
+    // Stop description of the screen
+    message("stop-description");
+
+    // Play Countdown
+    message("countDown");
+
     for(i = 0; i < level + 1; i++ ){
       // Getting a number between 1-4
       number = Math.floor(Math.random() * 4) + 1;
@@ -145,31 +185,32 @@ function setUp() {
     $('#sqr'+element+'.div'+element).toggleClass('div'+element+'light');
     
     // // Playing sound associated to that element 
-    // var sound = $('.' + soundPref + element)[0];
+    // sound = $('#' + soundPref + element)[0];
+    // console.log(sound);
     // sound.currentTime = 0;
     // sound.play();
     
     setTimeout(function(){
       // Playing sound associated to that element 
-      var sound = $('.' + soundPref + element)[0];
+      sound = $('#' + soundPref + element)[0];
       sound.currentTime = 0;
       sound.play();
-      var sound = '';
+      sound = '';
     }, delay);
 
 
     // Calling toggleClass again to 'switch off' square, and clear var 'sound'
     setTimeout(function(){
       $('#sqr'+element+'.div'+element).toggleClass('div'+element+'light');
-      var sound = '';
-    }, 600 + delay);
+      sound = '';
+    }, 800 + delay);
   };
 
   // On player turn put listeners to check if his/her pattern match computer one
   function addListeners() {
     $.each([1,2,3,4], function(index, element){
       $('#sqr' + element).on('click', function() {
-        blink(element);
+        blink(element, delay);
         checkPattern(element);
       })
       console.log('adding', element)
@@ -208,7 +249,7 @@ function setUp() {
         $('#instruction-msg').html('<h1 class="animated zoomIn">LEVEL: ' +level+'</h1>');
 
         // Playing sound associated to that level 
-        var sound = $('.' + levelPref + level)[0];
+        sound = $('#' + levelPref + level)[0];
         sound.currentTime = 0;
         sound.play();
         sound = '';
@@ -227,7 +268,6 @@ function setUp() {
       console.log('player fails');
       finishTime = $.now(); 
       console.log('This game finishes at: ', finishTime);
-      // I have to clean 'computerPattern'
       // debugger;
       gameOver();
     }
@@ -239,16 +279,12 @@ function setUp() {
   function gameOver(){
     console.log('Game Over');
     removeListeners();
-    computerPattern = [];
-    computer = [];
-    startTime;
-    level = 0;
-    score = 0;
+    resetVariables();
     $('#instruction-msg').html('<h1 class="animated zoomIn">GAME OVER</h1>');
     setTimeout(function(){
       message('gameOver');
     }, 3000);
-    var sound = $('.game-over')[0];
+    sound = $('#sound_gameover')[0];
     sound.currentTime = 0;
     sound.play();
     sound = '';

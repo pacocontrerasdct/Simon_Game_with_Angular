@@ -18,12 +18,13 @@
   border-right: solid #666666 2px;
   border-bottom: solid #666666 2px;
   border-left: solid #666666 1px;
+  cursor: pointer;
 }
 .back-squares-div {
   width: 100%;
   height: 400px;
   z-index: 0;
-  padding-bottom: 2em;
+  /*padding-bottom: 2em;*/
 }
 .div1 {    /*blue square*/
   background: #3498db;
