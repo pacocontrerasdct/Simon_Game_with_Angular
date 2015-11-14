@@ -18,11 +18,8 @@ Indeed, I did a small research about games which have into account this disabili
 There is a recent [article][bl-art-1] about accessibility in terms of games which have into account visually-impaired people, that shows there is still a long way to make possible the complete integration between normal people and the blind.
 Only the VoiceOver option that Apple implements in its devices allow blind gamers play to those games which are more or less accesible or strictly built as sound games. Indeed, there is an online [community for the blind] [bl-art-2] which is especifically related to this feature of Apple products.
 
-<<<<<<< HEAD
 On top of all my words, I have to say that as an Art teacher, some years ago I had to teach art techniques to a blind student; for that reason I attended to a specific course to learn how to teach visually-impaired people.
-=======
-On top of all my words, I have to say that as an Art Teacher, some years ago I had to teach art techniques to a blind student; for that reason I attended to a specific course to learn how to teach visually-impaired people.
->>>>>>> 3850db1158c2fa7279afd5f190ad97c43ab108ff
+
 Since that period, I feel some kind of sensitivity to this issue.
 
 # Game Mechanics
@@ -59,7 +56,6 @@ I built a single page application with AngularJS making the application reacts f
 I'm using NodeJS as server, Express for routing, MongoDB/ Mongoose to record data from the players, and nodemailer module to send emails to users in case they forget their username.
 
 ## Front-End
-<<<<<<< HEAD
 For my front-end I chose to use AngularJs framework because it was the last lesson we learnt in the WDI course and I wanted to try it a bit more, and because it is a JavaScript-based framework I thought could be suitable to work together with the jQuery library I used in my first project to build the first version of SIMON game.
 AngularJS is helping me connecting the front and back-end to call to the database. The ui.router module helps me to render the views and to have a single page application.
 For my css styles I decided to use purecss because of its simplicity but at the same time its minimalist style, and added some css animations from the cool library [animate.css][animateCSS]
@@ -69,17 +65,7 @@ I refactored a lot the script file that contents the main functions for playing 
 Because of lack of time, I mess with some kind of mock authentication (something temporary) to give users the sensation of being using a more complex system application. Instead, I should have used a middleware resource like passport.js.
 # Future improvement
 In terms of authentication, as I said in the previous paragraph, implementing passport.js is a must so I will try to get it working first.
-=======
-For my front-end I chose to use AngularJS framework because it was the last lesson we learnt in the WDI course and I wanted to try it a bit more, and because it is a JavaScript-based framework I thought could be suitable to work together with the jQuery library I used in my first project to build the first version of SIMON game.
-AngularJS is helping me connecting the front and back-end to call to the database. The ui.router module helps me to render the views and to have a single page application.
-For my css styles I decided to use pureCSS because of its simplicity but at the same time its minimalist style, and added some css animations from the cool library [animateCSS][animateCSS]
 
-# Drawbacks
-I refactored a lot the script file that contents the main functions for playing the game, and even change some function behaviours for simplicity issues, but I feel that I should have used Angular directives instead of jQuery resources to get working more of the AngularJS power.
-Because of lack of time, I mess with some kind of mock authentication (something temporary) to give users the sensation of being using a more complex system application. Instead, I should have used a middleware resource like Passport.js.
-# Future improvement
-In terms of authentication, as I said in the previous paragraph, implementing Passport.js is a must so I will try to get it working first.
->>>>>>> 3850db1158c2fa7279afd5f190ad97c43ab108ff
 Another improvement for the app I think it would be interesting to have is an 'off' button to turn all elemets in the page into black color, allowing normal people playing the game just as a blind person will do.
 
 In relation to this, a view page presenting some statistics could be interesting: average of blind/normal people players, compare scores...
@@ -97,8 +83,4 @@ A multiplayer option is another interesting improvement to allow group of friend
 [bl-art-3]: <http://www.polygon.com/features/2013/8/6/4550490/blind-games-rock-vibe>
 
 [animateCSS]: <https://github.com/daneden/animate.css>
-<<<<<<< HEAD
 [dataVisualizationAndTheBlind]: <https://www.perceptualedge.com/blog/?p=1756>
-=======
-[dataVisualizationAndTheBlind]: <https://www.perceptualedge.com/blog/?p=1756>
->>>>>>> 3850db1158c2fa7279afd5f190ad97c43ab108ff
