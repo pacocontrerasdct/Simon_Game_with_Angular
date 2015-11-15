@@ -24,19 +24,13 @@ span {
 }
 
 @media all {
-  /*Animation for game Over*/
-  .hinge-delay {
-    -webkit-animation-duration: 5s;
-    -webkit-animation-delay: 3s;
-    -webkit-animation-iteration-count: 1;
-
-    -moz-animation-duration: 5s;
-    -moz-animation-delay: 3s;
-    -moz-animation-iteration-count: 1;
-
-    animation-duration: 5s;
-    animation-delay: 3s;
-    animation-iteration-count: 1;
+  .score-and-level {
+    font: 1.6em bold helvetica, sans-serif;
+    letter-spacing: 2px;
+    -webkit-text-stroke: 0.3px white;
+    -moz-text-stroke: 0.3px white;
+    text-stroke: 0.3px white;
+    margin-right: 1em;
   }
   
   /*Adaptation of AnimateCSS for my purposes*/
@@ -125,6 +119,10 @@ span {
   }
   .margin-top30 {
     margin-top: 30px;
+  }
+  .inline {
+    display: flex;
+    padding: 1em;
   }
 }
 

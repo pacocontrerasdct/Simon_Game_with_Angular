@@ -6,13 +6,12 @@ $(document).ready(function(){
 function setUp() {
 
   // Variables to play a new game
-  var computerPattern = [];
-  var computer = [];
+  var pattern = [];
   var startTime;
   var level = 0;
   var score = 0;
-  var delay = 0;
   var sound = '';
+  var control = 0;
   
   // To present different messages to Player use a switch comparation
   var messageToPlayer;
@@ -24,20 +23,13 @@ function setUp() {
   var speedness = 1000;
 
   function resetVariables() {
-    // Variables to play a new game
-    console.log("inside reset");
-    computerPattern = [];
-    computer = [];
+    pattern = [];
     startTime;
     level = 0;
     score = 0;
-    delay = 0;
     sound = '';
-    console.log(computerPattern);
+    control = 0;
   }
-
-  // Description about the playing screen
-  message("play-screen-description");
 
   function message(messageToPlayer){
     switch (messageToPlayer) {
@@ -58,13 +50,6 @@ function setUp() {
         sound.play();
         sound = '';
         break;
-      // case "countDown":
-      //   countDown();
-        // sound = $('#sound_countdown')[0];
-        // sound.currentTime = 0;
-        // sound.play();
-        // sound = '';
-        // break;
       case "stop-description":
         sound = $('#speech_description_play_page');
         sound[0].pause();
@@ -79,10 +64,23 @@ function setUp() {
     }
   }
 
-  $('#startButton').on('click', newPattern);
+  // Description about the playing screen
+  message("play-screen-description");
+
+  $('#startButton').on('click', function() {
+      // Stop description of the screen if it is playing
+      message("stop-description");
+      // Start Countdown
+      countDown();
+      // Present first pattern
+      setTimeout(function(){
+        $('h1').remove();
+        newPattern();
+      }, 4500);
+  });
   $('#quitButton').on('click', showBlinking);
 
-  // For showing the pattern to newbee or a blind person
+  // For showing the pattern to a new player
   function showBlinking(){
     
     // Stop description of the screen
@@ -90,15 +88,7 @@ function setUp() {
     // Play description how to play
     message("how-to-play");
 
-
-
-    var instructions = [
-      'Click on squares',
-      'To check how they works',
-      'Each one blinks',
-      'And have a different sound',
-      ''
-    ];
+    var instructions = ['Click on squares', 'To check how they works', 'Each one blinks', 'And have a different sound', ''];
 
     $.each([1,2,3,4,5], function(index, element){      
       time = index * speedness;
@@ -108,20 +98,18 @@ function setUp() {
       }, time);
     });
 
+    // Add listeners to try session
     $.each([1,2,3,4], function(index, element){
       $('#sqr' + element).on('click', function() {
-        blink(element, delay);
+        blink(element);
       })
       console.log('adding listener to how to, element ', element)
     });
     
+    // Remove empty tag to avoid a non clickable area over squares
     setTimeout(function(){
       $('h1').remove();
     }, time);
-
-
-
-
   };
 
   // Countdown to start the game
@@ -129,45 +117,34 @@ function setUp() {
     $.each([3,2,1,"GO",""], function (index, element){
       setTimeout(function(){
         $('#instruction-msg').html('<h1 class="animated zoomIn">'+ element +'</h1>');
-      }, (index+1) * 760);
+      }, (index + 1) * 760);
     });
     sound = $('#sound_countdown')[0];
     sound.currentTime = 0;
     sound.play();
     sound = '';
-    $('h1').remove();
   }
 
-
-  // Function to create pattern for the game
+  // Function to create a pattern for the game
   function newPattern() {
     
     // Stop description of the screen
     message("stop-description");
+    // Show scores
+     $('#scores').toggleClass("ng-hide", false);
 
-    // Play Countdown
-    message("countDown");
-
-    for(i = 0; i < level + 1; i++ ){
-      // Getting a number between 1-4
-      number = Math.floor(Math.random() * 4) + 1;
-      // Recording into our computer pattern array
-      computerPattern.push(number);
-    }
-    console.log('Next is the pattern:', computerPattern);
-    
-    // Using 'computer' as a temporary container
-    computer = computerPattern;
-    console.log('In newPattern, this is the computer:', computer);
-    console.log('In newPattern, this is the computerPattern:', computerPattern);
+    // Getting a number between 1-4
+    number = Math.floor(Math.random() * 4) + 1;
+    // Recording that number into our computer pattern array
+    pattern.push(number);
 
     // Using a loop for getting the DIVs with ids: #sqr1, #sqr2..
     // Then, 'blink' to make colors change on the board 
-    $.each(computerPattern, function(index, element){
+    $.each(pattern, function(index, element){
         time = index * speedness;
         console.log("This time: ",time);
         setTimeout(function(){
-          blink(element, delay);
+          blink(element);
         }, time);
     });
 
@@ -176,49 +153,45 @@ function setUp() {
       startTime = $.now(); 
       console.log('This game starts at: ', startTime);
     }
-    
-    addListeners();
+
+    // Add listeners to track player answer with a delay to avoid interaction before needed
+    setTimeout(function(){ 
+      addListeners();
+    }, time + 1000);
   }
 
-  function blink(element, delay){
+  function blink(element){
     // Getting window element, toggling class to make it enlightened
     $('#sqr'+element+'.div'+element).toggleClass('div'+element+'light');
     
-    // // Playing sound associated to that element 
-    // sound = $('#' + soundPref + element)[0];
-    // console.log(sound);
-    // sound.currentTime = 0;
-    // sound.play();
-    
-    setTimeout(function(){
-      // Playing sound associated to that element 
+    setTimeout(function(){ // Playing sound associated to that element 
       sound = $('#' + soundPref + element)[0];
       sound.currentTime = 0;
       sound.play();
       sound = '';
-    }, delay);
-
+    }, 0);
 
     // Calling toggleClass again to 'switch off' square, and clear var 'sound'
     setTimeout(function(){
       $('#sqr'+element+'.div'+element).toggleClass('div'+element+'light');
       sound = '';
-    }, 800 + delay);
+    }, speedness * 0.75); // Need to adjust synchronisation with sound
   };
 
-  // On player turn put listeners to check if his/her pattern match computer one
+  // For adding listeners when needed 
   function addListeners() {
+    $('.square').css({ 'cursor':'pointer' }); // Add 'pointer' style
     $.each([1,2,3,4], function(index, element){
       $('#sqr' + element).on('click', function() {
-        blink(element, delay);
+        blink(element); // When click it, blink and check pattern
         checkPattern(element);
       })
-      console.log('adding', element)
     });
   }
 
   // On computer turn remove listeners
   function removeListeners() {
+    $('.square').css({ 'cursor':'default' });  // Back to 'default' cursor style
     $.each([1,2,3,4], function(index, element){
       $('#sqr' + element).off();
     });
@@ -226,91 +199,87 @@ function setUp() {
 
   // Checking player vs computer patterns
   function checkPattern(element){
-    var playerSelection = element;
-    console.log('This player Selection: ', playerSelection);
-    // Lets say that computer did 3 numbers, computerPattern = [2,3,2]
-    // Need to check every click against computerPattern
-    // First click let say player click = 2, checking computer[0] position
-    // and match so, remove first computer value. Now computer is [3,2]
-    // Second click player = 3, checking computer[0] position
-    // and match so remove that value, Now computer is [2]
-    // Third, player = 2, computer is 2, so remove that value
-    // No more values, no error, then player goes to next level
     
-    console.log('before comparing with player computer is: ', computer);
-    console.log('before comparing with player computerPattern is : ', computerPattern);
+    var playerSelection = element;
+    console.log('Player Selection: ', playerSelection);
+    // var 'control' is defined in setUp as being equal to 0
+    // If player select the first element correctly
+    if(playerSelection == pattern[control]){
+      
+      // Match the 'control' variable and check if there are more elements in the pattern array    
+      if(pattern.length - 1 === control){ // No more values in array? 
+        level = level + 1; // Player pass to next level
+        
+        // Update Score and Level
+        updateScores();
 
-    if(playerSelection == computer[0]){
-      computer.splice(0, 1);
-      if(computer.length === 0){
-        console.log('Pass to next level')
-        // There is no more values in the array, so player go to next level
-        level = level + 1;
+        // Return control to zero
+        control = 0;
+
+        // Every five levels, speedness is increase
+        if(level % 5 === 0) {
+          speedness = speedness - 110;
+        }
+
+        // Inform to player with voice and pop-up text 
         $('#instruction-msg').html('<h1 class="animated zoomIn">LEVEL: ' +level+'</h1>');
-
-        // Playing sound associated to that level 
         sound = $('#' + levelPref + level)[0];
         sound.currentTime = 0;
         sound.play();
         sound = '';
 
-        // add Score and Level To DB?
-        // Continue Game next level
+        // Remove listener to avoid conflict with next level pattern
         removeListeners();
+        // Call to next step in the pattern
         setTimeout(function(){
           $('h1').remove();
+          // Call to next level pattern
           newPattern();
         }, 2000);
       } else {
-        console.log('Right, there are more numbers')
+        console.log('Answer was right, but there are more numbers')
+        control++; // Add one to 'control' to check next index value
       }
     } else {  // If player makes a mistake  
       console.log('player fails');
       finishTime = $.now(); 
       console.log('This game finishes at: ', finishTime);
-      // debugger;
+      // Call to game over function
       gameOver();
     }
-    console.log('end of compare function computer is: ', computer);
-    console.log('end of compare function computerPattern is : ', computerPattern);
+  }
 
+  function updateScores() {
+    console.log('this is control : ', control);
+    console.log('this is pattern len : ', pattern.length);
+    if(control === 0) { control++; }
+    score += control * 10;
+    $('#level').html('LEVEL: ' + level);
+    $('#score').html('SCORE: ' + score);
   }
 
   function gameOver(){
     console.log('Game Over');
+    // Update Score and Level
+    updateScores();
     removeListeners();
     resetVariables();
+    // Pop-up text and voice, then call to message function
     $('#instruction-msg').html('<h1 class="animated zoomIn">GAME OVER</h1>');
     setTimeout(function(){
+      $('h1').remove();
       message('gameOver');
     }, 3000);
     sound = $('#sound_gameover')[0];
     sound.currentTime = 0;
     sound.play();
     sound = '';
+    // Hide scores
+    $('#scores').toggleClass("ng-hide", true);
   }
-
-  // This function close the window and finishes the game
-  function quit(){
-    console.log('function quit disabled!')
-    // url = "https://www.google.co.uk/";
-    // var newWindow = window.open('', '_self', ''); //open the current window
-    // window.close(url);
-  };
 
 // End of setUp
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

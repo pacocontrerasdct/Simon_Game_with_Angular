@@ -1,9 +1,6 @@
 <script type="text/javascript" src="js/script.js"></script>
 <style type="text/css">
-  .l-box-lrg {
-    padding: 0em;
-    /*border-bottom: 1px solid rgba(0,0,0,0.1);*/
-  }
+  .l-box-lrg { padding: 0em; }
 </style>
 <div class="animated bounceInDown">
   <div class="back-squares-div marginTop">
@@ -33,9 +30,18 @@
   <button id="startButton" class="button-error pure-button accessible-btn">START</button>
   <button id="quitButton" class="button-error pure-button accessible-btn">TRY</button>
 </div>
+<div id="scores" class="animated bounceInUp ng-hide">
+  <ul class="inline">
+    <li id="level" class="score-and-level">LEVEL: 1</li>
+    <li id="score" class="score-and-level">SCORE: 0</li>
+  </ul>
+</div>
+
+<!-- Window in absolute position to show mesagge to user  -->
 <div id="instruction-msg" class="absolute-center"></div>
 
 <!-- SOUNDS IN THIS PAGE -->
+<!-- /////////////////// -->
 <div id="sounds">
   
   <!-- Description of the screen -->
@@ -43,35 +49,14 @@
     <source src="sounds/speech_description_play_page.mp3"  type="audio/mpeg"/>
   </audio> 
 
-
-<!--   <audio preload="auto" id="speech_how_sound_squares_1">
-    <source src="sounds/speech_how_sound_squares_1.mp3"  type="audio/mpeg"/>
-  </audio>
-  <audio preload="auto" id="speech_how_sound_squares_2">
-    <source src="sounds/speech_how_sound_squares_2.mp3"  type="audio/mpeg"/>
-  </audio> -->
-
   <!-- Explaining how works the game --> 
   <audio preload="auto" id="speech_description_how_to_play">
     <source src="sounds/speech_description_how_to_play.mp3"  type="audio/mpeg"/>
   </audio>
-
+  <!-- Countdown to start the game -->
   <audio preload="auto" id="sound_countdown">
     <source src="sounds/sound_countdown.mp3"  type="audio/mpeg"/>
   </audio>
-
-<!--   <audio preload="auto" id="sound1_top_left_squ">
-    <source src="sounds/sound1_top_left_squ.mp3"  type="audio/mpeg"/>
-  </audio>
-  <audio preload="auto" id="sound2_top_right_squ">
-    <source src="sounds/sound2_top_right_squ.mp3"  type="audio/mpeg"/>
-  </audio>
-  <audio preload="auto" id="sound3_bottom_left_squ">
-    <source src="sounds/sound3_bottom_left_squ.mp3"  type="audio/mpeg"/>
-  </audio>
-  <audio preload="auto" id="sound4_bottom_right_squ">
-    <source src="sounds/sound4_bottom_right_squ.mp3"  type="audio/mpeg"/>
-  </audio> -->
 
   <!-- Sounds for the levels -->
   <audio preload="auto" id="sound_for_level_1">
@@ -135,7 +120,7 @@
     <source src="sounds/sound_for_level_20.mp3"  type="audio/mpeg"/>
   </audio>
 
-  
+  <!-- Game over recording -->
   <audio preload="auto" id="sound_gameover">
     <source src="sounds/sound_gameover.mp3"  type="audio/mpeg"/>
   </audio>
